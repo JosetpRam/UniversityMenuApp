@@ -7,8 +7,8 @@
         <StackPanel>
             <TextBlock Text="Mantenimiento de Alumnos" FontSize="22" FontWeight="SemiBold"/>
         </StackPanel>
-        <TextBox Text="{Binding formName}"  HorizontalAlignment="Left" Height="15" Margin="238,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
-        <TextBox Text="{Binding formEmail}" HorizontalAlignment="Left" Height="16" Margin="238,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
+        <TextBox Text="{Binding FormName, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Height="15" Margin="238,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
+        <TextBox Text="{Binding FormEmail, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="16" Margin="238,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
 
 
         <DataGrid Grid.Column="0"
@@ -28,11 +28,11 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="388,193,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="60"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="234,193,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="60"/>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="388,193,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="60" Command="{Binding DeleteStudentCommand}"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="234,193,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="60" Command="{Binding AddStudentCommand}"/>
         <Button Content="Export to Excel" HorizontalAlignment="Left" Margin="238,237,0,0" VerticalAlignment="Top" Height="24" Width="179" FontWeight="Bold" Background="#FF19F309" Command="{Binding ExportToExcelCommand}"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="238,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Gmail" HorizontalAlignment="Left" Margin="238,136,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button Content="Modificar" HorizontalAlignment="Left" Margin="304,193,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70"/>
+        <Button Content="Modificar" HorizontalAlignment="Left" Margin="304,193,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" Command="{Binding ModifyComand}"/>
     </Grid>
 </UserControl>

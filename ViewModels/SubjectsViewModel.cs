@@ -34,6 +34,46 @@ public partial class SubjectsViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void AddSubject()
+    {
+        if (string.IsNullOrWhiteSpace(FormName))
+            return;
+
+        int newId = Subjects.Count > 0 ? Subjects.Max(s => s.Id) + 1 : 1;
+
+        Subjects.Add(new Subject
+        {
+            Id = newId,
+            Name = FormName
+        });
+
+        FormName = "";
+    }
+    [RelayCommand]
+    private void DeleteSubject()
+    {
+        if (SelectedSubject == null)
+            return;
+
+        Subjects.Remove(SelectedSubject);
+    }
+    [RelayCommand]
+    private void UpdateSubject()
+    {
+        if (SelectedSubject == null)
+            return;
+
+        SelectedSubject.Name = FormName!;
+    }
+    partial void OnSelectedSubjectChanged(Subject? value)
+    {
+        if (value != null)
+        {
+            FormName = value.Name;
+        }
+    }
+
+    [RelayCommand]
 
     private void ExportToExcel()
     {

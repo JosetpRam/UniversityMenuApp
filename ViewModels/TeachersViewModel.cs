@@ -16,9 +16,9 @@ public partial class TeachersViewModel : ObservableObject
     [ObservableProperty]
     private string? formName;
     [ObservableProperty]
-    private int? formEmail;
+    private string? formEmail;
     [ObservableProperty]
-    private int? grid;
+    private string? grid;
 
     public TeachersViewModel()
     {
@@ -30,6 +30,50 @@ public partial class TeachersViewModel : ObservableObject
         Teachers.Clear();
         Teachers.Add(new Teacher { Id = 1, FullName = "Aron Claros", Email = "arcla@unicah.edu" });
         Teachers.Add(new Teacher { Id = 2, FullName = "Johana Claros", Email = "johanac@unicah.edu" });
+    }
+
+    [RelayCommand]
+    private void AddTeacher()
+    {
+        if (string.IsNullOrWhiteSpace(FormName) || string.IsNullOrWhiteSpace(FormEmail))
+            return;
+
+        int newId = Teachers.Count > 0 ? Teachers.Max(t => t.Id) + 1 : 1;
+
+        Teachers.Add(new Teacher
+        {
+            Id = newId,
+            FullName = FormName,
+            Email = FormEmail
+        });
+
+        FormName = "";
+        FormEmail = "";
+    }
+    [RelayCommand]
+    private void DeleteTeacher()
+    {
+        if (SelectedTeacher == null)
+            return;
+
+        Teachers.Remove(SelectedTeacher);
+    }
+    [RelayCommand]
+    private void UpdateTeacher()
+    {
+        if (SelectedTeacher == null)
+            return;
+
+        SelectedTeacher.FullName = FormName!;
+        SelectedTeacher.Email = FormEmail!;
+    }
+    partial void OnSelectedTeacherChanged(Teacher? value)
+    {
+        if (value != null)
+        {
+            FormName = value.FullName;
+            FormEmail = value.Email;
+        }
     }
 
     [RelayCommand]

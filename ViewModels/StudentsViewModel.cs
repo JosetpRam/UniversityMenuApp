@@ -1,4 +1,4 @@
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DocumentFormat.OpenXml.Office2010.Excel;
@@ -17,9 +17,9 @@ public partial class StudentsViewModel : ObservableObject
     [ObservableProperty]
     private string? formName;
     [ObservableProperty]
-    private int? formEmail;
+    private string? formEmail;
     [ObservableProperty]
-    private int? grid;
+    private string? grid;
 
     public StudentsViewModel()
     {
@@ -30,6 +30,51 @@ public partial class StudentsViewModel : ObservableObject
         Students.Clear();
         Students.Add(new Student { Id = 1, FullName = "Josetp Ramirez", Email = "jramirezrez@gmail.com" });
         Students.Add(new Student { Id = 2, FullName = "David Benavides", Email = "dabena@gmail.com" });
+    }
+
+    [RelayCommand]
+    private void AddStudent()
+    {
+        if (string.IsNullOrWhiteSpace(FormName) || string.IsNullOrWhiteSpace(FormEmail))
+            return;
+
+        int newId = Students.Count > 0 ? Students.Max(s => s.Id) + 1 : 1;
+
+        Students.Add(new Student
+        {
+            Id = newId,
+            FullName = FormName,
+            Email = FormEmail
+        });
+
+        FormName = "";
+        FormEmail = "";
+    }
+    partial void OnSelectedStudentChanged(Student? value)
+    {
+        if (value != null)
+        {
+            FormName = value.FullName;
+            FormEmail = value.Email;
+        }
+    }
+
+    [RelayCommand]
+    private void DeleteStudent()
+    {
+        if (SelectedStudent == null)
+            return;
+
+        Students.Remove(SelectedStudent);
+    }
+    [RelayCommand]
+    private void UpdateStudent()
+    {
+        if (SelectedStudent == null)
+            return;
+
+        SelectedStudent.FullName = FormName!;
+        SelectedStudent.Email = FormEmail!;
     }
 
 

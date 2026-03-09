@@ -6,7 +6,7 @@
         <StackPanel>
             <TextBlock Text="Mantenimiento de Asignaturas" FontSize="22" FontWeight="SemiBold"/>
         </StackPanel>
-        <TextBox Text="{Binding formName}"  HorizontalAlignment="Left" Height="15" Margin="238,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+        <TextBox Text="{Binding FormName, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Height="15" Margin="238,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
 
         <DataGrid Grid.Column="0"
                   HorizontalAlignment="Left" 
@@ -25,9 +25,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Nombre de la Asignatura" HorizontalAlignment="Left" Margin="229,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="212,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="55"/>
-        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="352,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="55"/>
-        <Button Content="Modificar" HorizontalAlignment="Left" Margin="275,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="212,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="55" Command="{Binding AddSubjectCommand}"/>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="352,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="55" Command="{Binding DeleteSubjectCommand}"/>
+        <Button Content="Modificar" HorizontalAlignment="Left" Margin="275,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" Command="{Binding UpdateSubjectCommand}"/>
         <Button Content="Export to Excel" HorizontalAlignment="Left" Margin="220,178,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="180" Background="#FF19F309" Command="{Binding ExportToExcelCommand}"/>
 
     </Grid>
