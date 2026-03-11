@@ -8,11 +8,11 @@ namespace UniversityMenuApp.Models
 {
     public class ReporteCalificaciones
     {
-        public int StudentId { get; set; }
-        public int StudentName { get; set; }
-        public int SubjectId { get; set; }
-        public int SubjectName { get; set; }
-        public int Notas { get; set; }
+        public int IdAlumno { get; set; }
+        public string Alumno { get; set; } = "";
+        public int IdMateria { get; set; }
+        public string Materia { get; set; } = "";
+        public int Nota { get; set; }
 
 
     }

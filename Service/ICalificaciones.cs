@@ -10,7 +10,9 @@ namespace UniversityMenuApp.Service
 {
     public interface ICalificaciones
     {
-        
-         
+
+        List<ReporteCalificaciones> NotasxAlumno(int id);
+        List<ReporteCalificaciones> NotasxMateria(int id);
+        List<ReporteCalificaciones> ObtenerNotasDetalladas();
     }
 }

@@ -11,23 +11,18 @@ namespace UniversityMenuApp.Service
 {
     public class Calificaciones : ICalificaciones
     {
-        private readonly IStudentRepository studentRepository;
+        private readonly IAlumnoRepository _alumnoRepository;
+        private readonly IMateriaRepository _materiaRepository;
+        private readonly INotaRepository _notaRepository;
 
-        private readonly ISubjectRepository subjectRepository;
-        private readonly IAlumnoNotasRepository alumnoNotasRepository;
-
-        public Service(IAlumno, INota, IMateria)
-        { 
-
-        }
-        public List<Calificaciones> NotasxAlumno(int Id)
+        public Calificaciones(
+            IAlumnoRepository alumnoRepository,
+            IMateriaRepository materiaRepository,
+            INotaRepository notaRepository)
         {
-            
-        }
-
-        public List<Calificaciones> NotasxMateria(int Id)
-        {
-
+            _alumnoRepository = alumnoRepository;
+            _materiaRepository = materiaRepository;
+            _notaRepository = notaRepository;
         }
 
 
