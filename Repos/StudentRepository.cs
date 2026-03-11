@@ -14,7 +14,7 @@ namespace UniversityMenuApp.Repos
             return new List<Student>
         {
             new() { Id = 1, FullName = "Josetp Ramirez",  Email = "jramirezrez@gmail.com" },
-            new() { Id = 2, FullName = "David Benavides",  Email = "dabena@gmail.com" },
+            new() { Id = 2, FullName = "David Benavides",  Email = "davbenav@gmail.com" },
         };
 
         }
