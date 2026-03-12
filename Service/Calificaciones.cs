@@ -25,7 +25,19 @@ namespace UniversityMenuApp.Service
             _notaRepository = notaRepository;
         }
 
+        public List<ReporteCalificaciones> NotasxAlumno(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<ReporteCalificaciones> NotasxMateria(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<ReporteCalificaciones> ObtenerNotasDetalladas()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
