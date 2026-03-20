@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniversityMenuApp.Models;
+using UniversityMenuApp.Repositories;
 using UniversityMenuApp.Service;
 
 namespace UniversityMenuApp.ViewModels
@@ -26,7 +27,24 @@ namespace UniversityMenuApp.ViewModels
 
         public AlumnoNotasViewModel() 
         {
-            
+            var alumnoRepo = new AlumnoRepository();
+            var materiaRepo = new MateriaRepository();
+            var notaRepo = new NotaRepository();
+
+            _calificaciones = new Calificaciones(alumnoRepo, materiaRepo, notaRepo);
+
+            foreach (var a in alumnoRepo.GetAll())
+                Alumnos.Add(a);
+
+            foreach (var m in materiaRepo.GetAll())
+                Materias.Add(m);
+
+            CargarTodas();
+        }
+
+        private void CargarTodas()
+        {
+            throw new NotImplementedException();
         }
     }
 }

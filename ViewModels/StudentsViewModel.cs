@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using UniversityMenuApp.Helper;
 using UniversityMenuApp.Models;
 
 namespace UniversityMenuApp.ViewModels;
@@ -30,6 +31,10 @@ public partial class StudentsViewModel : ObservableObject
         Students.Clear();
         Students.Add(new Student { Id = 1, FullName = "Josetp Ramirez", Email = "jramirezrez@gmail.com" });
         Students.Add(new Student { Id = 2, FullName = "David Benavides", Email = "dabena@gmail.com" });
+
+        var student = _repo.GetAll();
+        var document = new StudentReportDocument(student);
+        Document.GeneratePdf.Show(document);
     }
 
     [RelayCommand]
@@ -111,6 +116,8 @@ public partial class StudentsViewModel : ObservableObject
         wb.SaveAs(dialog.FileName);
 
     }
+
+    
 
 
 }
