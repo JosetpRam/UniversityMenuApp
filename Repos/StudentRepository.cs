@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniversityMenuApp.Data;
 using UniversityMenuApp.Models;
 
 namespace UniversityMenuApp.Repos
 {
     public class StudentRepository : IStudentRepository
     {
-        public IEnumerable<Student> GetStudents()
+        private readonly SchoolDBContext _context;
+        public StudentRepository(SchoolDBContext context)
         {
-            return new List<Student>
+            _context = context;
+        }
+        public List<Student> GetAllStudents()
         {
-            new() { Id = 1, FullName = "Josetp Ramirez",  Email = "jramirezrez@gmail.com" },
-            new() { Id = 2, FullName = "David Benavides",  Email = "davbenav@gmail.com" },
-        };
+            return _context.Students.ToList();
 
         }
+
+        public IEnumerable<Student> GetStudents()
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }

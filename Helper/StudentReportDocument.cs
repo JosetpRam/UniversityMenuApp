@@ -69,7 +69,7 @@ namespace UniversityMenuApp.Helper
                 foreach (var student in _student)
                 {
                     table.Cell().Text(student.Id.ToString());
-                    table.Cell().Text(student.Name);
+                    table.Cell().Text(student.FullName);
                   
                 }
             });
